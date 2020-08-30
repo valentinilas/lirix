@@ -3,8 +3,7 @@ import App from './components/App/App.vue'
 
 
 /**
- * =============================================
- * Import Boostrap vue
+ * Import Bulma scss
  */
 require('@/assets/bulma.scss');
 

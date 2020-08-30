@@ -22,3 +22,11 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## To Do
+
+- [x] Initial setup
+- [ ] VUEX Config
+- [ ] SCSS Structure & bulma overwrites.
+- [ ] Remaining components 
+
