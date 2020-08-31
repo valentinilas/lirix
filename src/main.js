@@ -7,6 +7,8 @@ import { store } from './store/store';
  */
 require('@/assets/bulma.scss');
 
+
+// Default config
 Vue.config.productionTip = false
 
 new Vue({

@@ -1,0 +1,21 @@
+/* Logo */
+
+.logo-container {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    border: 2px solid $burntSienna;
+    margin: 0 auto;
+    transition: $mainTransition;
+    user-select: none;
+    &:hover {
+        border: 2px solid $persianGreen;
+        .logo-text {
+            color: $persianGreen;
+        }
+    }
+    .logo-text {
+        color: $burntSienna;
+        letter-spacing: 0.5rem;
+        transition: $mainTransition;
+    }
+}
