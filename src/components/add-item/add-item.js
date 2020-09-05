@@ -1,18 +1,21 @@
-// import db from '../../store/store'
-
+import { mapActions } from 'vuex';
 
 export default {
     name: 'AddItem',
     data() {
         return {
             newRecord: {
-                name: '',
-                message: '',
-                author: ''
+                title: '',
+                bodyText: '',
+                authorId: ''
             }
         }
     },
     methods: {
+        ...mapActions({ postData: 'postData' }),
 
+        saveToDatabase() {
+            this.postData(this.newRecord);
+        }
     }
 }

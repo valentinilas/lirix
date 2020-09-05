@@ -20,10 +20,9 @@ export default {
 
     },
     methods: {
-        ...mapActions(['setCurrentJoke'])
+        ...mapActions(['getFreshLirix'])
     },
     mounted() {
-        // this.$store.dispatch("setCurrentJoke");
-        this.setCurrentJoke();
+        this.getFreshLirix();
     }
 }
