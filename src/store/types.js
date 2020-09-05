@@ -1,6 +1,8 @@
 export default {
     getAllLirix: 'getAllLirix',
     setAllLirix: 'setAllLirix',
+    allLirix: 'allLirix',
     getData: 'getData',
-    postData: 'postData'
+    postData: 'postData',
+    deleteData: 'deleteData'
 }

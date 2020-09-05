@@ -13,11 +13,15 @@ export default {
     },
     methods: {
         ...mapActions([
-            types.postData
+            types.postData,
+            types.deleteData
         ]),
 
         saveToDatabase() {
             this.postData(this.newRecord);
+        },
+        deleteItemfromDatabase(postId) {
+            this.deleteData(postId);
         }
     }
 }

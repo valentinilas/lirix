@@ -21,7 +21,7 @@ export const store = new Vuex.Store({
         siteMeta: {
             siteName: 'LIRIX'
         },
-        allLirix: []
+        [types.allLirix]: []
     },
     getters: {
         [types.getAllLirix](state) {
@@ -42,8 +42,7 @@ export const store = new Vuex.Store({
          */
         async [types.getData](state) {
             const lirixData = await fetchData(apiUrl, 'GET');
-            console.log('Getting new Data', lirixData.rows);
-            state.commit('setAllLirix', lirixData.rows);
+            state.commit(types.setAllLirix, lirixData.rows);
         },
 
         /**
@@ -57,7 +56,21 @@ export const store = new Vuex.Store({
             }).then(() => {
                 store.dispatch(types.getData);
             })
+        },
+
+        /**
+         * Deletes an item from he database by ID
+         * @param {*} store 
+         * @param {String} payload the id of the item 
+         */
+        [types.deleteData](store, payload) {
+            console.log('payload', payload)
+            fetchData(apiUrl + '/' + String(payload), 'DELETE')
+                .then(() => {
+                    store.dispatch(types.getData);
+                })
         }
+
 
     }
 });
