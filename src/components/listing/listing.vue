@@ -1,11 +1,14 @@
 <template>
-  <div class="lyric-listing py-6">
-    <div class="listing p-6 m-6">
-         
-    
-                <list-item v-for="(liric,index) in allLirix" :key="index"  :item-data="liric"></list-item>
-        
+  <div class="lyrix-listing columns">
+ 
+    <div class="column is-6 is-offset-3">
+      <list-item v-for="(liric,index) in filteredLirix" :key="index" :item-data="liric"></list-item>
     </div>
+
+    <!-- <div class="column is-6 is-offset-3">
+          OriginalList:
+      <list-item v-for="(liric,index) in allLirixReversed" :key="index" :item-data="liric"></list-item>
+    </div> -->
   </div>
 </template>
 

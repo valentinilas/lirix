@@ -5,6 +5,7 @@ import types from '../../store/types';
 
 export default {
     name: 'Listing',
+
     components: {
         'list-item': ListItem
 
@@ -12,8 +13,11 @@ export default {
 
     computed: {
         ...mapGetters({
-            allLirix: 'getAllLirix'
+            allLirix: types.getAllLirix,
+            allLirixReversed: types.getAllLirixRev,
+            filteredLirix: 'filteredLirix'
         })
+
     },
     methods: {
         ...mapActions([
@@ -23,5 +27,6 @@ export default {
         deleteItemfromDatabase(postId) {
             this.deleteData(postId);
         }
+
     }
 }

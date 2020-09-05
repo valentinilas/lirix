@@ -1,0 +1,7 @@
+.card:not(.active) .edit {
+    display: none;
+}
+
+.card.active .original {
+    display: none;
+}

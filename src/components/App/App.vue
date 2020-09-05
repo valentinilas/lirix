@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <Header />
-    <MainMenu />
-    <div class="container is-fullheight">
-      <div class="columns">
-        <div class="column">
-          <AddItem />
-        </div>
-        <div class="column">
-          <Listing />
-        </div>
+    <div class="section">
+      <app-header />
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <app-action-bar />
+        <app-listing />
+        <app-add-item />
       </div>
     </div>
-    <Footer />
+    <div class="section">
+      <app-footer />
+    </div>
   </div>
 </template>
 

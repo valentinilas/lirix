@@ -1,8 +1,8 @@
 import Header from '../header/header.vue'
-import MainMenu from '../main-menu/main-menu.vue'
 import Footer from '../footer/footer.vue'
 import AddItem from '../add-item/add-item.vue'
 import Listing from '../listing/listing.vue'
+import ActionBar from '../action-bar/action-bar.vue'
 import { mapActions } from 'vuex';
 import types from '../../store/types'
 export default {
@@ -13,11 +13,11 @@ export default {
         }
     },
     components: {
-        Header,
-        MainMenu,
-        Footer,
-        AddItem,
-        Listing
+        'app-header': Header,
+        'app-footer': Footer,
+        'app-add-item': AddItem,
+        'app-listing': Listing,
+        'app-action-bar': ActionBar
 
     },
     methods: {

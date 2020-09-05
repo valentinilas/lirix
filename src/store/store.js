@@ -21,16 +21,37 @@ export const store = new Vuex.Store({
         siteMeta: {
             siteName: 'LIRIX'
         },
+        modal: false,
+        searchTerm: '',
         [types.allLirix]: []
     },
     getters: {
         [types.getAllLirix](state) {
             return state.allLirix;
+        },
+        // Reversed Order
+        [types.getAllLirixRev](state) {
+            return state.allLirix.reverse();
+        },
+        [types.modalState](state) {
+            return state.modal;
+        },
+        filteredLirix(state) {
+            return state.allLirix.filter((liric) => {
+                return liric.title.toLowerCase().indexOf(state.searchTerm.toLowerCase()) > -1 || liric.bodyText.toLowerCase().indexOf(state.searchTerm.toLowerCase()) > -1;
+            })
         }
+
     },
     mutations: {
         [types.setAllLirix](state, payload) {
             state.allLirix = payload;
+        },
+        [types.setModal](state, payload) {
+            state.modal = payload;
+        },
+        setSearchTerm(state, payload) {
+            state.searchTerm = payload;
         }
 
     },
@@ -51,7 +72,20 @@ export const store = new Vuex.Store({
          * @param {Object} payload the data sent to the server
          */
         [types.postData](store, payload) {
-            fetchData(apiUrl, 'POST', JSON.stringify(payload), {
+            return fetchData(apiUrl, 'POST', JSON.stringify(payload), {
+                'Content-Type': 'application/json'
+            }).then(() => {
+                store.dispatch(types.getData);
+            })
+        },
+
+        /**
+         * Update data on the server and then trigger getData
+         * @param {} store 
+         * @param {Object} payload the data sent to the server
+         */
+        [types.updateData](store, payload) {
+            return fetchData(apiUrl, 'PATCH', JSON.stringify(payload), {
                 'Content-Type': 'application/json'
             }).then(() => {
                 store.dispatch(types.getData);
@@ -64,11 +98,17 @@ export const store = new Vuex.Store({
          * @param {String} payload the id of the item 
          */
         [types.deleteData](store, payload) {
-            console.log('payload', payload)
-            fetchData(apiUrl + '/' + String(payload), 'DELETE')
+            return fetchData(apiUrl + '/' + String(payload), 'DELETE')
                 .then(() => {
                     store.dispatch(types.getData);
                 })
+        },
+
+        [types.setModal](store, payload) {
+            store.commit(types.setModal, payload);
+        },
+        setSearchTerm(store, payload) {
+            store.commit('setSearchTerm', payload);
         }
 
 

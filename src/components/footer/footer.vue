@@ -3,7 +3,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-         Copyright @ {{new Date().getFullYear()}} {{siteName}} 
+         Muie @ {{new Date().getFullYear()}} {{siteName}} 
         </p>
       </div>
     </footer>

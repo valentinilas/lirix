@@ -1,7 +1,53 @@
 <template>
-  <div class="list-item">
+  <!-- <div class="list-item tile">
     {{itemData}}
-    test
+    <div class="level">
+        <div class="level-right">
+            <button @click="deleteItemfromDatabase(itemData.lirixId)" class="button is-danger is-small level-item">Delete</button>
+        </div>
+        
+    </div>
+  </div>-->
+
+  <div class="card mb-5" :class="{ active: editMode }">
+    <div class="card-content">
+      <!--  -->
+      <p class="title original">{{itemData.title}}</p>
+      <div class="title-edit edit">
+        <h4 class="title is-4">Title</h4>
+        <input class="input" type="text" v-model="newRecord.title" />
+      </div>
+      <!--  -->
+      <p class="subtitle original">{{itemData.authorId}}</p>
+      <div class="subtitle-edit edit">
+        <h4 class="title is-4">Author</h4>
+        <input class="input" type="text" v-model="newRecord.authorId" />
+      </div>
+      <!--  -->
+      <div class="body-text original">{{itemData.bodyText}}</div>
+      <div class="body-text-edit edit">
+        <h4 class="title is-4">Content</h4>
+        <textarea class="textarea" v-model="newRecord.bodyText"></textarea>
+      </div>
+      <!--  -->
+      <div class="buttons mt-2">
+        <button
+          class="button is-success is-outlined edit"
+          @click="updateItemInDatabase(itemData.lirixId)"
+          :class="{ 'is-loading': loading }"
+        >Save</button>
+        <button class="button is-danger is-outlined edit" @click="disableEditing()">Cancel</button>
+        <!--  -->
+      </div>
+    </div>
+    <footer class="card-footer">
+      <button class="card-footer-item button is-white" @click="enableEditing()">Edit</button>
+      <button
+        @click="deleteItemfromDatabase(itemData.lirixId)"
+        class="card-footer-item button is-white"
+        :class="{ 'is-loading': loading }"
+      >Delete</button>
+    </footer>
   </div>
 </template>
 
