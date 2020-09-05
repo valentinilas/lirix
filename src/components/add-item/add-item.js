@@ -1,5 +1,5 @@
 import { mapActions } from 'vuex';
-
+import types from '../../store/types';
 export default {
     name: 'AddItem',
     data() {
@@ -12,7 +12,9 @@ export default {
         }
     },
     methods: {
-        ...mapActions({ postData: 'postData' }),
+        ...mapActions([
+            types.postData
+        ]),
 
         saveToDatabase() {
             this.postData(this.newRecord);

@@ -4,6 +4,7 @@ import Footer from '../footer/footer.vue'
 import AddItem from '../add-item/add-item.vue'
 import Listing from '../listing/listing.vue'
 import { mapActions } from 'vuex';
+import types from '../../store/types'
 export default {
     name: 'App',
     data() {
@@ -20,9 +21,11 @@ export default {
 
     },
     methods: {
-        ...mapActions(['getFreshLirix'])
+        ...mapActions([
+            types.getData
+        ])
     },
     mounted() {
-        this.getFreshLirix();
+        this.getData();
     }
 }

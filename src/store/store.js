@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { fetchData } from '../utilities/fetchData'
 import { apiUrl } from '../constants';
-
+import types from './types'
 
 Vue.use(Vuex);
 /**
@@ -24,12 +24,12 @@ export const store = new Vuex.Store({
         allLirix: []
     },
     getters: {
-        getAllLirix(state) {
+        [types.getAllLirix](state) {
             return state.allLirix;
         }
     },
     mutations: {
-        setAllLirix(state, payload) {
+        [types.setAllLirix](state, payload) {
             state.allLirix = payload;
         }
 
@@ -40,22 +40,22 @@ export const store = new Vuex.Store({
          * Get data from the server and trigger a mutation
          * @param {} state 
          */
-        async getFreshLirix(state) {
+        async [types.getData](state) {
             const lirixData = await fetchData(apiUrl, 'GET');
             console.log('Getting new Data', lirixData.rows);
             state.commit('setAllLirix', lirixData.rows);
         },
 
         /**
-         * Send data to the server and then trigger getFreshLirix
+         * Send data to the server and then trigger getData
          * @param {} store 
          * @param {Object} payload the data sent to the server
          */
-        postData(store, payload) {
+        [types.postData](store, payload) {
             fetchData(apiUrl, 'POST', JSON.stringify(payload), {
                 'Content-Type': 'application/json'
             }).then(() => {
-                store.dispatch('getFreshLirix');
+                store.dispatch(types.getData);
             })
         }
 
