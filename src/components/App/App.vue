@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div class="section">
+    <div class="section py-0">
       <app-header />
     </div>
 
-    <div class="section">
+    <div class="section pt-0">
       <div class="container">
         <app-action-bar />
         <app-listing />

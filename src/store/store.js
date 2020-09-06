@@ -29,10 +29,6 @@ export const store = new Vuex.Store({
         [types.getAllLirix](state) {
             return state.allLirix;
         },
-        // Reversed Order
-        [types.getAllLirixRev](state) {
-            return state.allLirix.reverse();
-        },
         [types.modalState](state) {
             return state.modal;
         },
@@ -63,7 +59,8 @@ export const store = new Vuex.Store({
          */
         async [types.getData](state) {
             const lirixData = await fetchData(apiUrl, 'GET');
-            state.commit(types.setAllLirix, lirixData.rows);
+            console.log(lirixData);
+            state.commit(types.setAllLirix, lirixData.rows.reverse());
         },
 
         /**

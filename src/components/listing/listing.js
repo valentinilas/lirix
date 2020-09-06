@@ -14,7 +14,6 @@ export default {
     computed: {
         ...mapGetters({
             allLirix: types.getAllLirix,
-            allLirixReversed: types.getAllLirixRev,
             filteredLirix: 'filteredLirix'
         })
 

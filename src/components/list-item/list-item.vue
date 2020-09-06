@@ -11,24 +11,41 @@
 
   <div class="card mb-5" :class="{ active: editMode }">
     <div class="card-content">
+        <div class="notification is-danger is-light" v-if="errors.length">
+            <ul>
+              <li v-for="(error,index) in errors" :key="index">{{ error }}</li>
+            </ul>
+          </div>
+
+
       <!--  -->
       <p class="title original">{{itemData.title}}</p>
-      <div class="title-edit edit">
+
+      <div class="title-edit mb-5 edit">
         <h4 class="title is-4">Title</h4>
         <input class="input" type="text" v-model="newRecord.title" />
       </div>
       <!--  -->
-      <p class="subtitle original">{{itemData.authorId}}</p>
-      <div class="subtitle-edit edit">
+      <p class="has-text-grey-lighter original">Added by {{itemData.authorName}} {{addedOnDate}}</p>
+
+      <div class="subtitle-edit mb-5 edit">
         <h4 class="title is-4">Author</h4>
-        <input class="input" type="text" v-model="newRecord.authorId" />
+        <div class="select">
+          <select v-model="newRecord.authorId">
+            <option value="0" selected>Vali</option>
+            <option value="1">Cosmin</option>
+          </select>
+        </div>
       </div>
       <!--  -->
-      <div class="body-text original">{{itemData.bodyText}}</div>
-      <div class="body-text-edit edit">
+      <div class="body-text original my-5">
+        <pre>{{itemData.bodyText}}</pre>
+      </div>
+      <div class="body-text-edit mb-3 edit">
         <h4 class="title is-4">Content</h4>
         <textarea class="textarea" v-model="newRecord.bodyText"></textarea>
       </div>
+
       <!--  -->
       <div class="buttons mt-2">
         <button
@@ -36,16 +53,17 @@
           @click="updateItemInDatabase(itemData.lirixId)"
           :class="{ 'is-loading': loading }"
         >Save</button>
-        <button class="button is-danger is-outlined edit" @click="disableEditing()">Cancel</button>
+        <button class="button is-danger is-outlined edit " @click="disableEditing()">Cancel</button>
         <!--  -->
       </div>
     </div>
     <footer class="card-footer">
-      <button class="card-footer-item button is-white" @click="enableEditing()">Edit</button>
+      <button class=" button is-white " @click="enableEditing()">Edit</button>
       <button
         @click="deleteItemfromDatabase(itemData.lirixId)"
-        class="card-footer-item button is-white"
+        class=" button is-white "
         :class="{ 'is-loading': loading }"
+        :disabled="editMode"
       >Delete</button>
     </footer>
   </div>
