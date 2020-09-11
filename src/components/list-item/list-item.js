@@ -47,6 +47,9 @@ export default {
                 this.deleteData(postId)
                     .then(() => {
                         this.loading = false;
+                        if (this.$route.params.id) {
+                            this.$router.push('/');
+                        }
                     });
             }
 

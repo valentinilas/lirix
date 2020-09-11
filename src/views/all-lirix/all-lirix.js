@@ -1,6 +1,7 @@
 import AddItem from '../../components/add-item/add-item.vue'
 import Listing from '../../components/listing/listing.vue'
 import ActionBar from '../../components/action-bar/action-bar.vue'
+import ThemeSwitcher from '../../components/theme-switcher/theme-switcher.vue'
 import { mapActions } from 'vuex';
 import types from '../../store/types'
 export default {
@@ -13,7 +14,8 @@ export default {
     components: {
         'app-add-item': AddItem,
         'app-listing': Listing,
-        'app-action-bar': ActionBar
+        'app-action-bar': ActionBar,
+        'theme-switcher': ThemeSwitcher
 
     },
     methods: {

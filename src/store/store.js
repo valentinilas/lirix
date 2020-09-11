@@ -21,6 +21,7 @@ export const store = new Vuex.Store({
         siteMeta: {
             siteName: 'LIRIX'
         },
+        theme: 'light',
         modal: false,
         searchTerm: '',
         [types.allLirix]: [],
@@ -40,6 +41,9 @@ export const store = new Vuex.Store({
             return state.allLirix.filter((liric) => {
                 return liric.title.toLowerCase().indexOf(state.searchTerm.toLowerCase()) > -1 || liric.bodyText.toLowerCase().indexOf(state.searchTerm.toLowerCase()) > -1;
             })
+        },
+        getTheme(state) {
+            return state.theme;
         }
 
     },
@@ -56,6 +60,9 @@ export const store = new Vuex.Store({
         },
         setSearchTerm(state, payload) {
             state.searchTerm = payload;
+        },
+        setTheme(state, payload) {
+            state.theme = payload;
         }
 
     },
@@ -116,8 +123,13 @@ export const store = new Vuex.Store({
         [types.setModal](store, payload) {
             store.commit(types.setModal, payload);
         },
+
         setSearchTerm(store, payload) {
             store.commit('setSearchTerm', payload);
+        },
+
+        setTheme(store, payload) {
+            store.commit('setTheme', payload);
         }
 
 

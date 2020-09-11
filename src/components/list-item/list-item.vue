@@ -1,13 +1,5 @@
 <template>
-  <!-- <div class="list-item tile">
-    {{itemData}}
-    <div class="level">
-        <div class="level-right">
-            <button @click="deleteItemfromDatabase(itemData.lirixId)" class="button is-danger is-small level-item">Delete</button>
-        </div>
-        
-    </div>
-  </div>-->
+
 
   <div class="card mb-5" :class="{ active: editMode }">
     <div class="card-content">

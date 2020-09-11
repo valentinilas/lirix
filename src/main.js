@@ -14,6 +14,7 @@ const router = new VueRouter({
  * Import Bulma scss
  */
 require('@/assets/bulma.scss');
+require('@/styles/dark-theme.scss');
 
 
 // Default config

@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" :class="getTheme">
    
-    <div class="section py-0">
+    <div class="section pb-0">
       <app-header />
     </div>
 

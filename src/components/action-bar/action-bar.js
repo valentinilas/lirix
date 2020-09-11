@@ -1,6 +1,7 @@
 import { mapActions } from 'vuex';
 import types from '../../store/types';
 
+
 export default {
     name: 'ActionBar',
     data() {
@@ -8,6 +9,7 @@ export default {
             searchTerm: ''
         }
     },
+
     methods: {
         ...mapActions([
             types.setModal,
