@@ -23,11 +23,15 @@ export const store = new Vuex.Store({
         },
         modal: false,
         searchTerm: '',
-        [types.allLirix]: []
+        [types.allLirix]: [],
+        [types.singleLiric]: ''
     },
     getters: {
         [types.getAllLirix](state) {
             return state.allLirix;
+        },
+        [types.getSingleLiric](state) {
+            return state.singleLiric;
         },
         [types.modalState](state) {
             return state.modal;
@@ -42,6 +46,10 @@ export const store = new Vuex.Store({
     mutations: {
         [types.setAllLirix](state, payload) {
             state.allLirix = payload;
+        },
+        [types.setSingleLiric](state, payload) {
+            // state.singleLiric = [];
+            state.singleLiric = payload;
         },
         [types.setModal](state, payload) {
             state.modal = payload;
@@ -61,6 +69,10 @@ export const store = new Vuex.Store({
             const lirixData = await fetchData(apiUrl, 'GET');
             console.log(lirixData);
             state.commit(types.setAllLirix, lirixData.rows.reverse());
+        },
+        async [types.getDataSingle](state, payload) {
+            const lirixData = await fetchData(apiUrl + '/' + payload, 'GET');
+            state.commit(types.setSingleLiric, lirixData);
         },
 
         /**

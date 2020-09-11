@@ -11,6 +11,7 @@
 
   <div class="card mb-5" :class="{ active: editMode }">
     <div class="card-content">
+
         <div class="notification is-danger is-light" v-if="errors.length">
             <ul>
               <li v-for="(error,index) in errors" :key="index">{{ error }}</li>
@@ -65,6 +66,8 @@
         :class="{ 'is-loading': loading }"
         :disabled="editMode"
       >Delete</button>
+   
+      <router-link  class="button is-white " :to="'/li/' + itemData.lirixId" v-if="!this.$route.params.id">Link</router-link>
     </footer>
   </div>
 </template>

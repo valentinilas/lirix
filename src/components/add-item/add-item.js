@@ -11,7 +11,7 @@ export default {
             newRecord: {
                 title: '',
                 bodyText: '',
-                authorId: ''
+                authorId: 0
             }
         }
     },

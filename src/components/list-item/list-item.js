@@ -1,4 +1,6 @@
 import { mapActions } from 'vuex';
+// import { mapGetters } from 'vuex';
+
 import types from '../../store/types'
 export default {
     name: 'ListItem',
@@ -11,8 +13,20 @@ export default {
             newRecord: {
                 title: this.itemData.title,
                 bodyText: this.itemData.bodyText,
-                authorId: 1,
-                lirixId: this.itemData.lirixId
+                authorId: this.itemData.authorId,
+                lirixId: this.itemData.lirixId,
+                authorName: this.itemData.authorName
+            }
+        }
+    },
+    watch: {
+        itemData() {
+            this.newRecord = {
+                title: this.itemData.title,
+                bodyText: this.itemData.bodyText,
+                authorId: this.itemData.authorId,
+                lirixId: this.itemData.lirixId,
+                authorName: this.itemData.authorName
             }
         }
     },
@@ -20,8 +34,11 @@ export default {
     methods: {
         ...mapActions([
             types.deleteData,
-            types.updateData
+            types.updateData,
+            types.getDataSingle
         ]),
+
+
         deleteItemfromDatabase(postId) {
 
             if (confirm('Are you sure?')) {
@@ -34,16 +51,22 @@ export default {
             }
 
         },
+
         updateItemInDatabase() {
 
 
 
             let fieldData = this.newRecord;
 
-            if (fieldData.title && fieldData.bodyText && fieldData.authorId) {
+            if (fieldData.bodyText && fieldData.authorId) {
                 this.loading = true;
+
+
                 this.updateData(this.newRecord)
                     .then(() => {
+                        if (this.$route.params.id) {
+                            this.getDataSingle(this.$route.params.id);
+                        }
                         this.loading = false;
                         this.disableEditing();
                     });
@@ -69,14 +92,14 @@ export default {
         }
     },
     computed: {
+
+
         addedOnDate() {
             let now = new Date().getDay();
             let date = new Date(this.itemData.timestamp);
 
             let diffTime = Math.abs(now - date);
             let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-
 
             if (diffDays > 1) {
                 return ('at ' + date.getHours() + ':' + date.getMinutes());

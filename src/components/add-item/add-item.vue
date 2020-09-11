@@ -20,19 +20,19 @@
             </div>
 
             <div class="field">
-              <label class="label">Author</label>
+              <label class="label">Author*</label>
               <div class="control">
                 <div class="select">
                   <select v-model="newRecord.authorId">
-                    <option value="0" selected>Vali</option>
-                    <option value="1">Cosmin</option>
+                    <option value="0" >Vali</option>
+                    <option value="1" selected>Cosmin</option>
                   </select>
                 </div>
               </div>
             </div>
 
             <div class="field">
-              <label class="label">Content</label>
+              <label class="label">Content*</label>
               <div class="control">
                 <textarea class="textarea" placeholder="Textarea" v-model="newRecord.bodyText"></textarea>
               </div>

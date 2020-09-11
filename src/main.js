@@ -1,6 +1,14 @@
 import Vue from 'vue'
-import App from './components/App/App.vue'
+import App from './views/App/App.vue'
 import { store } from './store/store';
+import VueRouter from 'vue-router'
+import Routes from './routes/routes';
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+    routes: Routes,
+    mode: 'history'
+});
 
 /**
  * Import Bulma scss
@@ -13,5 +21,6 @@ Vue.config.productionTip = false
 
 new Vue({
     store: store,
+    router: router,
     render: h => h(App),
 }).$mount('#app')
