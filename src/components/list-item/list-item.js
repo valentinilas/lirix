@@ -58,7 +58,7 @@ export default {
 
             let fieldData = this.newRecord;
 
-            if (fieldData.bodyText && fieldData.authorId) {
+            if (fieldData.bodyText) {
                 this.loading = true;
 
 
@@ -74,12 +74,8 @@ export default {
 
             this.errors = [];
 
-            if (!fieldData.title) {
-                this.errors.push('Add a title');
-            }
-            if (!fieldData.authorId) {
-                this.errors.push('Select an author ');
-            }
+
+
             if (!fieldData.bodyText) {
                 this.errors.push('Add some content');
             }
@@ -95,16 +91,15 @@ export default {
 
 
         addedOnDate() {
-            let now = new Date().getDay();
+            let now = new Date();
             let date = new Date(this.itemData.timestamp);
 
-            let diffTime = Math.abs(now - date);
+            let diffTime = Math.abs(now.getTime() - date.getTime());
             let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-            if (diffDays > 1) {
+            if (diffDays < 2) {
                 return ('at ' + date.getHours() + ':' + date.getMinutes());
             } else {
-                return ('on ' + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
+                return ('on ' + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear());
             }
 
         }

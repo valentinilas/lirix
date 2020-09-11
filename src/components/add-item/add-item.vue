@@ -24,8 +24,8 @@
               <div class="control">
                 <div class="select">
                   <select v-model="newRecord.authorId">
-                    <option value="0" >Vali</option>
-                    <option value="1" selected>Cosmin</option>
+                    <option value="0" selected>Vali</option>
+                    <option value="1" >Cosmin</option>
                   </select>
                 </div>
               </div>
