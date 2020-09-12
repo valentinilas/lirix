@@ -5,11 +5,7 @@ export default [{
         component: AllLirixView
     },
     {
-        path: '/lirix',
-        component: AllLirixView
-    },
-    {
-        path: '/lirix/li/:id',
+        path: '/li/:id',
         component: SingleLiView,
         props: true
     }
