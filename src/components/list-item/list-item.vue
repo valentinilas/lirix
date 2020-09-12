@@ -59,7 +59,7 @@
         :disabled="editMode"
       >Delete</button>
    
-      <router-link  class="button is-white " :to="'/lirix/li/' + itemData.lirixId" v-if="!this.$route.params.id">Link</router-link>
+      <router-link  class="button is-white " :to="'/li/' + itemData.lirixId" v-if="!this.$route.params.id">Link</router-link>
     </footer>
   </div>
 </template>
